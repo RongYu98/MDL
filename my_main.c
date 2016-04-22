@@ -64,9 +64,33 @@ void my_main( int polygons ) {
   s = new_stack();
   tmp = new_matrix(4, 1000);
   clear_screen( t );
-
+  
   for (i=0;i<lastop;i++) {  
     switch (op[i].opcode) {
+    case 'push':
+      printf("push\n");
+    case 'pop':
+      printf("pop\n");
+    case 'move':
+      printf('\s',op[i].opcode);
+    case 'rotate':
+      printf('\s',op[i].opcode);
+    case 'scale':
+      printf('\s',op[i].opcode);
+    case 'box':
+      printf('\s',op[i].opcode);
+    case 'sphere':
+      printf('\s',op[i].opcode);
+    case 'torus':
+      printf('\s',op[i].opcode);
+    case 'line':
+      printf('\s',op[i].opcode);
+    case 'save':
+      printf('\s',op[i].opcode);
+    case 'display':
+      printf('\s',op[i].opcode);
+    default :
+      printf("something else..\n");
     }
   }
 }
