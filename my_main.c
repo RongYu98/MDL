@@ -76,6 +76,7 @@ void my_main( int polygons ) {
     case 'pop':
       pop( s );
       printf("pop\n");
+      break;
 
     case 'move':
       printf('\s',op[i].opcode);
@@ -86,6 +87,7 @@ void my_main( int polygons ) {
       tmp = make_translate(xval, yval, zval);
       matrix_mult( s->data[ s->top ], tmp );
       copy_matrix( tmp, s->data[ s->top ] );
+      break;
 
     case 'rotate': //line 625 of mdl.y
       printf('\s',op[i].opcode);
@@ -102,6 +104,7 @@ void my_main( int polygons ) {
 
       matrix_mult( s->data[ s->top ], tmp );
       copy_matrix( tmp, s->data[ s->top ] );
+      break;
 
     case 'scale': //line 589 of mdl.y
       printf('\s',op[i].opcode);
@@ -113,6 +116,7 @@ void my_main( int polygons ) {
 
       matrix_mult( s->data[ s->top ], tmp );
       copy_matrix( tmp, s->data[ s->top ] );
+      break;
 
     case 'box':
       printf('\s',op[i].opcode);
@@ -127,6 +131,7 @@ void my_main( int polygons ) {
       matrix_mult( s->data[ s->top ], pm);
       draw_polygons( pm, t, g );
       pm->lastcol = 0;
+      break;
 
     case 'sphere':
       printf('\s',op[i].opcode);
@@ -171,14 +176,18 @@ void my_main( int polygons ) {
       matrix_mult( s->data[ s->top], pm);
       draw_lines( pm, t, g);
       pm->lastcol = 0;
+      break;
 
     case 'save':
       printf('\s',op[i].opcode);
       save_extension(t, op[lastop].op.save.p);
+      break;
 
     case 'display':
       printf('\s',op[i].opcode);
       display(t);
+      break;
+
     default :
       printf("something else..\n");
     }
