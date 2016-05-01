@@ -122,7 +122,7 @@ void my_main( int polygons ) {
 
       add_box(pm, xval, yval, zval, dx, dy, dz);
       matrix_mult( s->data[ s->top ], pm);
-      draw_polygons( pm, s, g );
+      draw_polygons( pm, t, g );
       pm->lastcol = 0;
 
     case 'sphere':
@@ -135,7 +135,7 @@ void my_main( int polygons ) {
 
       add_sphere(pm, xval, yval, zval, r);
       matrix_mult( s->data[ s->top ], pm);
-      draw_polygons( pm, s, g );
+      draw_polygons( pm, t, g );
       pm->lastcol = 0;
   
     case 'torus':
@@ -149,7 +149,7 @@ void my_main( int polygons ) {
 
       add_torus(pm, xval, yval, zval, r1, r2);
       matrix_mult( s->data[ s->top ], pm);
-      draw_polygons( pm, s, g );
+      draw_polygons( pm, t, g );
       pm->lastcol = 0;
       
     case 'line':
@@ -164,16 +164,16 @@ void my_main( int polygons ) {
       
       add_edge(pm, xval, yval, zval, x2, y2, z2);
       matrix_mult( s->data[ s->top], pm);
-      draw_lines( pm, s, g);
+      draw_lines( pm, t, g);
       pm->lastcol = 0;
 
     case 'save':
       printf('\s',op[i].opcode);
-      save_extension(s, op[lastop].op.save.p);
+      save_extension(t, op[lastop].op.save.p);
 
     case 'display':
       printf('\s',op[i].opcode);
-      display(s);
+      display(t);
     default :
       printf("something else..\n");
     }
