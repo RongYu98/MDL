@@ -155,12 +155,12 @@ void my_main( int polygons ) {
     case 'line':
       printf('\s',op[i].opcode);
 
-      xval = op[lastop].op.line.p0[0] = $2;
-      yval = op[lastop].op.line.p0[1] = $3;
-      zval = op[lastop].op.line.p0[2] = $4;
-      double x2 = op[lastop].op.line.p1[0] = $5;
-      double y2 = op[lastop].op.line.p1[1] = $6;
-      double z2 = op[lastop].op.line.p1[2] = $7;
+      xval = op[lastop].op.line.p0[0];
+      yval = op[lastop].op.line.p0[1];
+      zval = op[lastop].op.line.p0[2];
+      double x2 = op[lastop].op.line.p1[0];
+      double y2 = op[lastop].op.line.p1[1];
+      double z2 = op[lastop].op.line.p1[2];
       
       add_edge(pm, xval, yval, zval, x2, y2, z2);
       matrix_mult( s->data[ s->top], pm);
