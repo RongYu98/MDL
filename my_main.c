@@ -71,6 +71,7 @@ void my_main( int polygons ) {
     case 'push':
       push( s );
       printf("push\n");
+      break;
 
     case 'pop':
       pop( s );
@@ -139,6 +140,7 @@ void my_main( int polygons ) {
       matrix_mult( s->data[ s->top ], pm);
       draw_polygons( pm, t, g );
       pm->lastcol = 0;
+      break;
   
     case 'torus':
       printf('\s',op[i].opcode);
@@ -153,6 +155,7 @@ void my_main( int polygons ) {
       matrix_mult( s->data[ s->top ], pm);
       draw_polygons( pm, t, g );
       pm->lastcol = 0;
+      break;
       
     case 'line':
       printf('\s',op[i].opcode);
