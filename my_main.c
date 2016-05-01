@@ -105,9 +105,9 @@ void my_main( int polygons ) {
     case 'scale': //line 589 of mdl.y
       printf('\s',op[i].opcode);
 
-      xval = op[lastop].op.scale.d[0]
-      yval = op[lastop].op.scale.d[1]
-      zval = op[lastop].op.scale.d[2]
+      xval = op[lastop].op.scale.d[0];
+      yval = op[lastop].op.scale.d[1];
+      zval = op[lastop].op.scale.d[2];
       tmp = make_scale(xval, yval, zval);
 
       matrix_mult( s->data[ s->top ], tmp );
