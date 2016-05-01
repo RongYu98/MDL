@@ -61,7 +61,7 @@ void my_main( int polygons ) {
   struct stack *s;
   screen t;
   color g;
-  
+   
   s = new_stack();
   tmp = new_matrix(4, 1000);
   clear_screen( t );
@@ -71,9 +71,11 @@ void my_main( int polygons ) {
     case 'push':
       push( s );
       printf("push\n");
+
     case 'pop':
       pop( s );
       printf("pop\n");
+
     case 'move':
       printf('\s',op[i].opcode);
       xval = op[i].op.move.d[0];
@@ -90,11 +92,11 @@ void my_main( int polygons ) {
       angle = op[lastop].op.rotate.degrees;
 
       if (op[i].op.rotate.axis == 0){
-        tmp = make_rotX( angle );
+        tmp = make_rotX( angle * (M_PI/180) );
       } else if (op[i].op.rotate.axis == 1){
-        tmp = make_rotY( angle );
+        tmp = make_rotY( angle * (M_PI/180) );
       } else if (op[i].op.rotate.axis == 2){
-        tmp = make_rotZ( angle );
+        tmp = make_rotZ( angle * (M_PI/180) );
       }
 
       matrix_mult( s->data[ s->top ], tmp );
@@ -133,7 +135,7 @@ void my_main( int polygons ) {
       zval = op[lastop].op.sphere.d[2];
       double r = op[lastop].op.sphere.r;
 
-      add_sphere(pm, xval, yval, zval, r);
+      add_sphere(pm, xval, yval, zval, r, 10);
       matrix_mult( s->data[ s->top ], pm);
       draw_polygons( pm, t, g );
       pm->lastcol = 0;
@@ -147,7 +149,7 @@ void my_main( int polygons ) {
       double r1 = op[lastop].op.torus.r0;
       double r2 = op[lastop].op.torus.r1;
 
-      add_torus(pm, xval, yval, zval, r1, r2);
+      add_torus(pm, xval, yval, zval, r1, r2, 10);
       matrix_mult( s->data[ s->top ], pm);
       draw_polygons( pm, t, g );
       pm->lastcol = 0;
