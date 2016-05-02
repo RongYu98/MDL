@@ -3,6 +3,7 @@ push
 move 250 250 0
 rotate y 45
 box -100 150 25 200 300 50
+//display
 //head
 push
 move 0 201 0
@@ -32,4 +33,4 @@ move -100 -150 0
 rotate x 20
 box 0 0 20 60 100 40
 display
-quit
+save hi
